@@ -100,7 +100,7 @@ src/
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/your-username/devmatch-frontend.git
+git clone https://github.com/Angad0045/DevMatch-Frontend.git
 cd devmatch-frontend
 npm install
 ```
@@ -383,7 +383,7 @@ Pre-commit hooks (Husky + lint-staged) run ESLint and Prettier automatically.
 
 ## Related
 
-- [DevMatch Backend →](https://github.com/your-username/devmatch-backend)
+- [DevMatch Backend →](https://github.com/Angad0045/DevMatch-Backend.git)
 
 ---
 

@@ -19,7 +19,7 @@ export const useSocket = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    if (!accessToken) return;
+    if (!accessToken || !import.meta.env.VITE_SOCKET_URL) return;
 
     // Reuse existing connection if already open
     if (socketInstance?.connected) {

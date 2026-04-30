@@ -3,13 +3,16 @@ import { AVATAR_COLOURS } from "./index";
 export const avatarColour = (name = "") =>
   AVATAR_COLOURS[(name.charCodeAt(0) || 0) % AVATAR_COLOURS.length];
 
-export const initials = (name = "") =>
+export const initials = (name = "") => {
+  if (!name || typeof name !== "string") return "?";
+
   name
     .split(" ")
     .map((w) => w[0])
     .join("")
     .slice(0, 2)
     .toUpperCase();
+};
 
 export const relativeTime = (dateStr) => {
   if (!dateStr) return "";

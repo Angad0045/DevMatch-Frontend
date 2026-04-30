@@ -1,7 +1,7 @@
 import { cn } from "../../utils/cn.js";
 import { useRef, useState } from "react";
 import { AVATAR_BG, INTENT_LABELS } from "../../constants/index.js";
-
+import { initials } from "../../constants/helperFunction.jsx";
 // How far user must drag before it counts as a swipe
 const SWIPE_THRESHOLD = 100;
 
@@ -68,12 +68,7 @@ export default function SwipeCard({ user, onLike, onPass, isTop }) {
   const { profile, intent } = user;
   const displayName = profile?.displayName ?? "Unknown";
   const avatarIdx = displayName.charCodeAt(0) % AVATAR_BG.length;
-  const initials = displayName
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
+  const initial = initials(displayName);
 
   const primaryIntent = intent?.[0] ?? null;
   const experienceLevel = profile?.experienceLevel ?? null;
@@ -130,7 +125,7 @@ export default function SwipeCard({ user, onLike, onPass, isTop }) {
                 AVATAR_BG[avatarIdx],
               )}
             >
-              {initials}
+              {initial}
             </div>
           )}
 

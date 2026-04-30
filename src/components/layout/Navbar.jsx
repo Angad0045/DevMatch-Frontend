@@ -6,7 +6,7 @@ import { authService } from "../../services/authService.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks.js";
 import { selectCurrentUser, logout } from "../../features/auth/authSlice.js";
-import { div } from "motion/react-client";
+import { initials } from "../../constants/helperFunction.jsx";
 
 const NAV_LINKS = [
   { label: "Discover", to: "/feed" },
@@ -21,13 +21,8 @@ export default function Navbar() {
   const user = useAppSelector(selectCurrentUser);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const initials =
-    user?.profile?.displayName
-      ?.split(" ")
-      .map((w) => w[0])
-      .join("")
-      .slice(0, 2)
-      .toUpperCase() ?? "??";
+  const displayName = user?.profile?.displayName;
+  const initial = initials(displayName);
 
   const handleLogout = async () => {
     try {
@@ -101,12 +96,12 @@ export default function Navbar() {
                 <>
                   <img
                     src={user?.profile?.avatarUrl}
-                    alt={initials}
+                    alt={initial}
                     className="h-full w-full rounded-full object-center"
                   />
                 </>
               ) : (
-                { initials }
+                { initial }
               )}
             </div>
             <span className="hidden text-sm font-semibold text-ink sm:block">
